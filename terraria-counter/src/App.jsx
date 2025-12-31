@@ -1,34 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Counter from './components/Counter'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <h1 style={{ color: '#d9c5b2', textShadow: '4px 4px 0 #3c3024', marginBottom: '40px' }}>
+        Terraria UI Prototype
+      </h1>
+
+      <div className="demo-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+        <p style={{ color: '#aaa', fontStyle: 'italic' }}>Copper Ore Balance</p>
+        <Counter initialValue={17} threshold={10} />
+
+        <p style={{ color: '#aaa', fontStyle: 'italic', marginTop: '40px' }}>Low Resource Example (Iron)</p>
+        <Counter initialValue={5} threshold={10} iconPath="/assets/copper_ore.png" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="info-box" style={{
+        marginTop: '60px',
+        padding: '20px',
+        background: 'rgba(60, 48, 36, 0.8)',
+        border: '4px solid #3c3024',
+        color: '#d9c5b2',
+        maxWidth: '500px',
+        textAlign: 'left'
+      }}>
+        <h3 style={{ marginTop: 0 }}>Design Principles:</h3>
+        <ul style={{ paddingLeft: '20px' }}>
+          <li><strong>Visual Hierarchy:</strong> Thick pixelated borders and paper texture.</li>
+          <li><strong>Responsive Feedback:</strong> Number "pops" on change to draw the eye.</li>
+          <li><strong>Cognitive Load:</strong> Minimalist display with immediate status cues (red flash).</li>
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
